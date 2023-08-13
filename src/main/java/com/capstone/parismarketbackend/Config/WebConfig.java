@@ -24,21 +24,23 @@ package com.capstone.parismarketbackend.Config;
 //    }
 //}
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-@Configuration
-@EnableWebMvc
-public class WebConfig implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/markets")
-                .allowedOrigins("http://localhost:3000")
-                .allowedMethods("GET")
-                .allowedHeaders("*")
-                .allowCredentials(true)
-                .maxAge(3600);
-    }
-}
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.web.servlet.config.annotation.CorsRegistry;
+//import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+//
+//@Configuration
+//@EnableWebMvc
+//public class WebConfig implements WebMvcConfigurer {
+////    @Override
+////    public void addCorsMappings(CorsRegistry registry) {
+////        registry.addMapping("/api/markets/all")
+////                .allowedOrigins("http://localhost:3000")
+////                .allowedMethods("GET")
+////                .allowedHeaders("*")
+////                .allowCredentials(true)
+////                .maxAge(3600);
+//
+//
+//    }
+//}

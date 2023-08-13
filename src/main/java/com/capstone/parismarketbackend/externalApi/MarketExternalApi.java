@@ -6,22 +6,26 @@ import com.capstone.parismarketbackend.model.Market;
 import com.capstone.parismarketbackend.service.MarketService;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Component
 public class MarketExternalApi {
+
+    private List<Market> cachedMarkets;
+    private Instant lastUpdateTimestamp;
 
     private final MarketService marketService;
 
     public MarketExternalApi(MarketService marketService){
+
         this.marketService = marketService;
     }
 
@@ -29,6 +33,10 @@ public class MarketExternalApi {
 
 
     public Mono<List<Market>> getExternalAllMarkets() {
+
+        if(cachedMarkets != null && lastUpdateTimestamp != null && Duration.between(lastUpdateTimestamp, Instant.now()).toHours() < 72){
+            return Mono.just(cachedMarkets);
+        }
 
         // Paris API URL to fetch market data
         String parisApiUrl = "https://opendata.paris.fr/api/explore/v2.0/catalog/datasets/marches-decouverts/records?limit=100";
@@ -70,6 +78,7 @@ public class MarketExternalApi {
             } else {
                 System.out.println("No records found in the response.");
             }
+            cachedMarkets = markets;
             return markets;
         });
     }
