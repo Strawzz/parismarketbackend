@@ -1,10 +1,8 @@
-
 package com.capstone.parismarketbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
 @Data
@@ -25,9 +23,9 @@ public class Comment {
     @Column(nullable = false)
     private String loginId;
 
-
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "userId")
-    private User user;
+    @JoinColumn(name = "user_id")  // Use the actual column name in dbUser table
+    private dbUser user;  // Use "user" instead of "dbUser"
 }
+

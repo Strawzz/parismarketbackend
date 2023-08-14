@@ -1,7 +1,7 @@
 package com.capstone.parismarketbackend.controller;
 
 import com.capstone.parismarketbackend.model.Comment;
-import com.capstone.parismarketbackend.model.User;
+import com.capstone.parismarketbackend.model.dbUser;
 import com.capstone.parismarketbackend.repository.CommentRepository;
 import com.capstone.parismarketbackend.repository.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -53,7 +53,7 @@ public class CommentController {
 
         String decodedLoginId = URLDecoder.decode(loginId, StandardCharsets.UTF_8);
         String decodedMarketName = URLDecoder.decode(marketName, StandardCharsets.UTF_8);
-        Optional<User> existingUser = userRepository.findByLoginId(loginId);
+        Optional<dbUser> existingUser = userRepository.findByLoginId(loginId);
 
         if(existingUser.isPresent()){
             comment.setUser(existingUser.get());
