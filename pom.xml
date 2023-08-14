@@ -14,7 +14,7 @@
     <groupId>com.capstone</groupId>
     <artifactId>parismarketbackend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <package>war</package>
+    <packaging>war</packaging>
     <name>parismarketbackend</name>
     <description>parismarketbackend</description>
     <properties>
