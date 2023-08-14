@@ -107,6 +107,13 @@
                     <configuration>
                         <source>1.8</source> <!-- Set the appropriate source version -->
                         <target>1.8</target> <!-- Set the appropriate target version -->
+                        <compilerArgs>
+                            <arg>-Xlint:all,-options</arg>
+                            <arg>-source</arg>
+                            <arg>1.8</arg> <!-- Explicitly set the source version -->
+                            <arg>-target</arg>
+                            <arg>1.8</arg> <!-- Explicitly set the target version -->
+                        </compilerArgs>
                     </configuration>
                 </plugin>
 
