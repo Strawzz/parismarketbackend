@@ -25,7 +25,7 @@ public class Comment {
 
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "user_id")  // Use the actual column name in dbUser table
-    private dbUser user;  // Use "user" instead of "dbUser"
+    @JoinColumn(name = "user_id")
+    private dbUser user;
 }
 
